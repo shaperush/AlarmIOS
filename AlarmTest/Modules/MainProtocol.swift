@@ -14,10 +14,15 @@ protocol MainConfiguratorProtocol: class {
 }
 
 protocol MainViewProtocol: class {
-
+    func initPickerView()
+    func initDatePicker()
+    func changeState(state: AlarmState)
 }
 
 protocol MainPresenterProtocol: class {
-    init(view: MainViewProtocol)
+    var sleepTimeList: [Int] {get}
+    var selectedSleepTime: Int { get set }
+    var selectedDate: Date? { get set }
+    init(view: MainViewProtocol, alarm: AlarmServiceProtocol)
     func configureView()
 }

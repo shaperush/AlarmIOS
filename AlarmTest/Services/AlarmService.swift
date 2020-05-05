@@ -14,6 +14,7 @@ import UIKit
 enum AlarmState: String {
     case idle
     case playing
+    case pause
     case recording
     case alarm
 }
@@ -30,6 +31,8 @@ class AlarmService: AlarmServiceProtocol {
     private var sleepWorkItem: DispatchWorkItem?
     private var alarmQueue: DispatchQueue?
     
+    public var alarmServiceDelegate: AlarmServiceDelegate?
+    
     public var currentState : AlarmState {
         get {
             guard let state = UserDefaults.standard.value(forKey: alarmStateKey) as? String else {
@@ -40,6 +43,9 @@ class AlarmService: AlarmServiceProtocol {
         }
         set {
             UserDefaults.standard.set(newValue.rawValue, forKey: alarmStateKey)
+            DispatchQueue.main.async {
+                self.alarmServiceDelegate?.changeState(state: newValue)
+            }
         }
     }
     
@@ -58,6 +64,16 @@ class AlarmService: AlarmServiceProtocol {
         }
     }
     
+    public func playSong() {
+        self.player.playSong()
+        currentState = .playing
+    }
+    
+    public func pauseSong() {
+        self.player.pauseSong()
+        currentState = .pause
+    }
+    
     public func stopAlarm() {
         self.player.stopSong {
             self.currentState = .idle
@@ -65,7 +81,7 @@ class AlarmService: AlarmServiceProtocol {
     }
     
     private func startAlarmSession(time: Date, sleep: Int) {
-       alarmQueue = DispatchQueue.global(qos: .background)
+        alarmQueue = DispatchQueue.global(qos: .background)
         self.initAlarmQueue(time: time)
         
         if sleep > 0 {

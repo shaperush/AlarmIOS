@@ -7,11 +7,12 @@
 //
 
 import Foundation
-
+import UIKit
 
 class MainConfigurator: MainConfiguratorProtocol {
     public func configure(with viewController: MainViewController) {
-        let presenter = MainPresenter(view: viewController)
+        let app = UIApplication.shared.delegate as! AppDelegate
+        let presenter = MainPresenter(view: viewController, alarm: app.alarmService)
         viewController.presenter = presenter
     }
 }

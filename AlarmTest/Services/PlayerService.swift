@@ -18,11 +18,11 @@ class PlayerService: NSObject, AVAudioPlayerDelegate {
         super.init()
     }
     
-    private func playSong() {
+    public func playSong() {
         audioPlayer?.play()
     }
       
-    private func pauseSong() {
+    public func pauseSong() {
         audioPlayer?.pause()
     }
   
