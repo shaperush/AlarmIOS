@@ -13,6 +13,8 @@ class MainPresenter: MainPresenterProtocol {
     weak var view: MainViewProtocol?
     unowned var alarmService: AlarmServiceProtocol
     weak var alarmServiceDelegate: AlarmServiceDelegate?
+    public var selectedSleepTime = 0
+    public var selectedDate: Date?
     
     public var sleepTimeList: [Int] {
         get {
@@ -20,27 +22,47 @@ class MainPresenter: MainPresenterProtocol {
         }
     }
     
-    public var selectedSleepTime = 0
-    public var selectedDate: Date?
-
     required init(view: MainViewProtocol, alarm: AlarmServiceProtocol) {
         self.view = view
         alarmService = alarm
-        alarmServiceDelegate = alarmService.alarmServiceDelegate
+        alarmService.alarmServiceDelegate = self
     }
     
     func configureView() {
         self.view?.initPickerView()
         self.view?.initDatePicker()
+    }
+    
+    func updateView()  {
         self.view?.changeState(state: alarmService.currentState)
+    }
+    
+    func stopTap() {
+        alarmService.stopAlarm()
+    }
+    
+    func playTap() {
+        if alarmService.currentState == .idle {
+            guard let date = selectedDate else {
+                self.view?.showError(.emptyDate)
+                return
+            }
+            alarmService.setAlarm(time: date, sleep: selectedSleepTime) { (success) in
+                if !success {
+                    self.view?.showError(.microphonePermission)
+                }
+            }
+        } else if alarmService.currentState == .playing {
+            alarmService.playePauseSong(isPlay: false)
+        } else if alarmService.currentState == .pause {
+            alarmService.playePauseSong(isPlay: true)
+        }
     }
 }
 
 extension MainPresenter: AlarmServiceDelegate {
-    func changeState(state: AlarmState) {
+    func changeState() {
+        let state = alarmService.currentState
         self.view?.changeState(state: state)
-        print("state")
     }
-    
-    
 }

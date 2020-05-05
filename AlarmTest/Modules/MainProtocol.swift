@@ -17,6 +17,7 @@ protocol MainViewProtocol: class {
     func initPickerView()
     func initDatePicker()
     func changeState(state: AlarmState)
+    func showError(_ error: AlarmError) 
 }
 
 protocol MainPresenterProtocol: class {
@@ -25,4 +26,7 @@ protocol MainPresenterProtocol: class {
     var selectedDate: Date? { get set }
     init(view: MainViewProtocol, alarm: AlarmServiceProtocol)
     func configureView()
+    func playTap()
+    func stopTap()
+    func updateView()
 }

@@ -19,8 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         requestAuthForLocalNotifications()
-       
-        
         return true
     }
     
@@ -28,29 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         notifCenter.delegate = self
         notifCenter.requestAuthorization(options: [.alert, .sound, .provisional]) { (granted, error) in
             if error != nil {
-                // Something went wrong
+                
             }
         }
     }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print("hello 4")
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-      //  alarmService.player.startSong(songName: "alarm.mp3")
-        print("hello 1")
-        
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {
-        print("hello 2")
-    }
-    
-
-
-    
-
-    
 }
 

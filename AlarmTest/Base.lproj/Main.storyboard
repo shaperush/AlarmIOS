@@ -21,7 +21,22 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1B-yh-Cio">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="253"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="idle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VgN-Vg-CVI">
+                                                <rect key="frame" x="186" y="111.66666666666666" width="42.333333333333343" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="6pu-4Y-yPc"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="VgN-Vg-CVI" firstAttribute="centerX" secondItem="S1B-yh-Cio" secondAttribute="centerX" id="D2K-2s-7CA"/>
+                                            <constraint firstItem="VgN-Vg-CVI" firstAttribute="centerY" secondItem="S1B-yh-Cio" secondAttribute="centerY" id="Zlp-9H-zRs"/>
+                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P9c-wP-zup">
                                         <rect key="frame" x="0.0" y="282" width="414" height="253"/>
@@ -33,6 +48,9 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <state key="normal" title="STOP"/>
+                                                <connections>
+                                                    <action selector="stopAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E50-Vw-AaD"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -50,7 +68,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="51" id="rbg-Zl-zTk"/>
                                                 </constraints>
-                                                <state key="normal" title="PLAY"/>
+                                                <state key="normal" title="PAUSE"/>
                                                 <connections>
                                                     <action selector="playAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BXr-WY-Cpa"/>
                                                 </connections>
@@ -58,14 +76,14 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="U53-1a-Chh">
                                                 <rect key="frame" x="7.3333333333333428" y="144" width="399.33333333333326" height="30"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sleep time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6B-15-3ej">
-                                                        <rect key="frame" x="0.0" y="0.0" width="256.33333333333331" height="30"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sleep Timer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6B-15-3ej">
+                                                        <rect key="frame" x="0.0" y="0.0" width="333.66666666666669" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="20 min" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fGC-gw-K2z">
-                                                        <rect key="frame" x="256.33333333333337" y="0.0" width="143" height="30"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="off" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fGC-gw-K2z">
+                                                        <rect key="frame" x="333.66666666666669" y="0.0" width="65.666666666666686" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -77,14 +95,14 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="ayJ-5H-XpO">
                                                 <rect key="frame" x="8" y="90" width="398.33333333333331" height="30"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarm time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swl-q3-LCI">
-                                                        <rect key="frame" x="0.0" y="0.0" width="272.33333333333331" height="30"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarm " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swl-q3-LCI">
+                                                        <rect key="frame" x="0.0" y="0.0" width="179.66666666666666" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="22:33" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZDc-mP-lEg">
-                                                        <rect key="frame" x="272.33333333333331" y="0.0" width="126" height="30"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="set alarm" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZDc-mP-lEg">
+                                                        <rect key="frame" x="179.66666666666669" y="0.0" width="218.66666666666669" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -124,6 +142,7 @@
                         <outlet property="alarmView" destination="BKP-RM-sn6" id="GTF-Ps-XWb"/>
                         <outlet property="playButton" destination="feO-Eq-sph" id="2tQ-vj-mKf"/>
                         <outlet property="sleepTimeField" destination="fGC-gw-K2z" id="nE7-Xn-oJ5"/>
+                        <outlet property="stateLabel" destination="VgN-Vg-CVI" id="U2C-gb-5Ud"/>
                         <outlet property="stopView" destination="P9c-wP-zup" id="6Ff-fe-AeA"/>
                     </connections>
                 </viewController>

@@ -49,24 +49,26 @@ class PlayerService: NSObject, AVAudioPlayerDelegate {
         }
     }
   
-    public func stopSong(finish: @escaping () -> ()) {
+    public func stopSong(queue: DispatchQueue, isFade: Bool, finish: @escaping () -> ()) {
         let fadeoutSongSecond = 6
         audioPlayer?.setVolume(0.0, fadeDuration: Double(fadeoutSongSecond))
-        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + .seconds(fadeoutSongSecond)) {
+        if(isFade) {
+                queue.asyncAfter(deadline: .now() + .seconds(fadeoutSongSecond)) { [weak self] in
+                self?.audioPlayer?.stop()
+                self?.audioPlayer = nil
+                finish()
+            }
+        } else {
             self.audioPlayer?.stop()
             self.audioPlayer = nil
             finish()
         }
     }
     
+    /// Init audio session
     private func initAudioSession() throws {
         try AVAudioSession.sharedInstance().setCategory(.playback, options: .mixWithOthers)
         try AVAudioSession.sharedInstance().setActive(true)
-    }
-    
-    private func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
     }
     
     //AVAudioPlayerDelegate protocol

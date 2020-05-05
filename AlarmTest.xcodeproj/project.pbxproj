@@ -24,6 +24,7 @@
 		F10273B32460924C00961EDE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F10273B22460924C00961EDE /* AVFoundation.framework */; };
 		F10273B52460B21E00961EDE /* nature.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F10273B42460B21E00961EDE /* nature.mp3 */; };
 		F10273B72460B22700961EDE /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F10273B62460B22700961EDE /* alarm.mp3 */; };
+		F10273BA2461B05A00961EDE /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10273B92461B05A00961EDE /* Error.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		F10273B22460924C00961EDE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F10273B42460B21E00961EDE /* nature.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nature.mp3; sourceTree = "<group>"; };
 		F10273B62460B22700961EDE /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
+		F10273B92461B05A00961EDE /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 		F1027364245F2EF700961EDE /* AlarmTest */ = {
 			isa = PBXGroup;
 			children = (
+				F10273B82461B03D00961EDE /* Helper */,
 				F10273A824605A4100961EDE /* Resources */,
 				F102739D245F2FA700961EDE /* App */,
 				F102739A245F2F6C00961EDE /* Services */,
@@ -194,6 +197,14 @@
 				F10273B22460924C00961EDE /* AVFoundation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F10273B82461B03D00961EDE /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F10273B92461B05A00961EDE /* Error.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,6 +348,7 @@
 				F10273A7245F5A5D00961EDE /* PlayerService.swift in Sources */,
 				F10273AE24606AB900961EDE /* MainViewController.swift in Sources */,
 				F10273A3245F326600961EDE /* AlarmServiceProtocol.swift in Sources */,
+				F10273BA2461B05A00961EDE /* Error.swift in Sources */,
 				F1027397245F2F4100961EDE /* MainPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

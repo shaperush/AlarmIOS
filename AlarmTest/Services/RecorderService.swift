@@ -19,6 +19,7 @@ class RecorderService: NSObject, AVAudioRecorderDelegate  {
         self.registerForNotifications()
     }
     
+    /// Start recording service
     public func startRecording(name: String) {
         let audioFilename = getDocumentsDirectory().appendingPathComponent("\(name).m4a")
         let settings = [
@@ -52,6 +53,7 @@ class RecorderService: NSObject, AVAudioRecorderDelegate  {
         audioRecorder = nil
     }
     
+    /// Init record session
     private func initRecordSession() throws {
         try audioSession.setCategory(.record, mode: .default, options: .mixWithOthers)
         try audioSession.setActive(true)
@@ -62,6 +64,7 @@ class RecorderService: NSObject, AVAudioRecorderDelegate  {
         return paths[0]
     }
     
+    /// Register Interruption notification
     private func registerForNotifications() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(handleInterruption),
@@ -69,6 +72,7 @@ class RecorderService: NSObject, AVAudioRecorderDelegate  {
                                                object: AVAudioSession.sharedInstance())
     }
     
+    /// Handle Interruption for record
     @objc func handleInterruption(_ notification: Notification) {
         guard let info = notification.userInfo,
             let typeValue = info[AVAudioSessionInterruptionTypeKey] as? UInt,
@@ -86,8 +90,6 @@ class RecorderService: NSObject, AVAudioRecorderDelegate  {
             }
         }
     }
-    
-  
 }
 
 

@@ -15,6 +15,7 @@ class MainViewController: UIViewController, MainViewProtocol {
     
     @IBOutlet weak var stopView: UIView!
     @IBOutlet weak var alarmView: UIView!
+    @IBOutlet weak var stateLabel: UILabel!
     
     @IBOutlet weak var alarmTimeField: UITextField!
     @IBOutlet weak var sleepTimeField: UITextField!
@@ -23,43 +24,64 @@ class MainViewController: UIViewController, MainViewProtocol {
     let pickerView = UIPickerView()
     let datePicker = UIDatePicker()
     
+    let documentInteractionController = UIDocumentInteractionController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configurator.configure(with: self)
         presenter.configureView()
-        
-
-        
-        
-//        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-//        do {
-//            let fileURLs = try FileManager.default.contentsOfDirectory(at: paths[0], includingPropertiesForKeys: nil)
-//            print(fileURLs)
-//        } catch {
-//            print("Error while enumerating files  \(error.localizedDescription)")
-//        }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        presenter.updateView()
+    }
     
+    @IBAction func stopAction(_ sender: Any) {
+        presenter.stopTap()
+    }
     
-
     @IBAction func playAction(_ sender: Any) {
+        presenter.playTap()
+    }
     
+    func showError(_ error: AlarmError) {
+        let alertController = UIAlertController(title: "error", message: error.rawValue, preferredStyle: .alert)
+        self.present(alertController,animated: true, completion: nil)
+        alertController.dismiss(animated: true, completion: nil)
     }
     
     func changeState(state: AlarmState) {
+        let startButtonLabel = "START"
+        let playButtonLabel = "PLAY"
+        let pauseButtonLabel = "PAUSE"
+        
+        self.stateLabel.text = state.rawValue
         self.alarmView.isHidden = true
         self.stopView.isHidden = true
+        self.playButton.isHidden = false
+        self.alarmTimeField.isEnabled = true
+        self.sleepTimeField.isEnabled = true
+        
         switch state {
         case .idle:
             self.alarmView.isHidden = false
+            self.playButton.setTitle(startButtonLabel, for: .normal)
         case .playing:
             self.alarmView.isHidden = false
+            self.playButton.setTitle(pauseButtonLabel, for: .normal)
+            self.alarmTimeField.isEnabled = false
+            self.sleepTimeField.isEnabled = false
         case .pause:
             self.alarmView.isHidden = false
+            self.playButton.setTitle(playButtonLabel, for: .normal)
+            self.alarmTimeField.isEnabled = false
+            self.sleepTimeField.isEnabled = false
         case .recording:
             self.alarmView.isHidden = false
+            self.playButton.isHidden = true
+            self.alarmTimeField.isEnabled = false
+            self.sleepTimeField.isEnabled = false
         case .alarm:
             self.stopView.isHidden = false
         }
@@ -85,13 +107,15 @@ class MainViewController: UIViewController, MainViewProtocol {
     }
     
     func initDatePicker() {
+        let screenWidth = UIScreen.main.bounds.width
+        datePicker.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 216)
         datePicker.backgroundColor = .white
         datePicker.datePickerMode = .time
         datePicker.addTarget(self, action: #selector(datePickerChange(sender:)), for: .valueChanged)
         let toolbar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.size.height, height: 40.0))
         toolbar.barStyle = .default
         toolbar.sizeToFit()
-        
+
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButton(sender:)))
         doneButton.tag = 2
         toolbar.setItems([doneButton], animated: false)
@@ -106,6 +130,8 @@ class MainViewController: UIViewController, MainViewProtocol {
     }
     
     @objc func doneButton(sender: UIBarButtonItem) {
+        let sleepTimePlaceholder = "off"
+        
         if let date = presenter.selectedDate {
             let formatter = DateFormatter()
             formatter.dateFormat = "HH:mm"
@@ -115,7 +141,7 @@ class MainViewController: UIViewController, MainViewProtocol {
         if presenter.selectedSleepTime > 0 {
             sleepTimeField.text = "\(presenter.selectedSleepTime) min"
         } else {
-            sleepTimeField.text = "off"
+            sleepTimeField.text = sleepTimePlaceholder
         }
         sleepTimeField.resignFirstResponder()
         alarmTimeField.resignFirstResponder()
