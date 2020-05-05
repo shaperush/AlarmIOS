@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F1027366245F2EF700961EDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1027365245F2EF700961EDE /* AppDelegate.swift */; };
-		F1027368245F2EF700961EDE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1027367245F2EF700961EDE /* SceneDelegate.swift */; };
-		F102736A245F2EF700961EDE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1027369245F2EF700961EDE /* MainViewController.swift */; };
 		F102736D245F2EF700961EDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F102736B245F2EF700961EDE /* Main.storyboard */; };
 		F102736F245F2EF800961EDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F102736E245F2EF800961EDE /* Assets.xcassets */; };
 		F1027372245F2EF800961EDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1027370245F2EF800961EDE /* LaunchScreen.storyboard */; };
@@ -20,6 +18,12 @@
 		F102739C245F2F8E00961EDE /* AlarmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102739B245F2F8E00961EDE /* AlarmService.swift */; };
 		F10273A1245F306800961EDE /* MainConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10273A0245F306800961EDE /* MainConfigurator.swift */; };
 		F10273A3245F326600961EDE /* AlarmServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10273A2245F326600961EDE /* AlarmServiceProtocol.swift */; };
+		F10273A5245F5A4A00961EDE /* RecorderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10273A4245F5A4A00961EDE /* RecorderService.swift */; };
+		F10273A7245F5A5D00961EDE /* PlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10273A6245F5A5D00961EDE /* PlayerService.swift */; };
+		F10273AE24606AB900961EDE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10273AD24606AB900961EDE /* MainViewController.swift */; };
+		F10273B32460924C00961EDE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F10273B22460924C00961EDE /* AVFoundation.framework */; };
+		F10273B52460B21E00961EDE /* nature.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F10273B42460B21E00961EDE /* nature.mp3 */; };
+		F10273B72460B22700961EDE /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F10273B62460B22700961EDE /* alarm.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +46,6 @@
 /* Begin PBXFileReference section */
 		F1027362245F2EF700961EDE /* AlarmTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlarmTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1027365245F2EF700961EDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F1027367245F2EF700961EDE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F1027369245F2EF700961EDE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F102736C245F2EF700961EDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F102736E245F2EF800961EDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1027371245F2EF800961EDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,6 +61,12 @@
 		F102739B245F2F8E00961EDE /* AlarmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmService.swift; sourceTree = "<group>"; };
 		F10273A0245F306800961EDE /* MainConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainConfigurator.swift; sourceTree = "<group>"; };
 		F10273A2245F326600961EDE /* AlarmServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmServiceProtocol.swift; sourceTree = "<group>"; };
+		F10273A4245F5A4A00961EDE /* RecorderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderService.swift; sourceTree = "<group>"; };
+		F10273A6245F5A5D00961EDE /* PlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerService.swift; sourceTree = "<group>"; };
+		F10273AD24606AB900961EDE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F10273B22460924C00961EDE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F10273B42460B21E00961EDE /* nature.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nature.mp3; sourceTree = "<group>"; };
+		F10273B62460B22700961EDE /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F10273B32460924C00961EDE /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +102,7 @@
 				F102737B245F2EF800961EDE /* AlarmTestTests */,
 				F1027386245F2EF800961EDE /* AlarmTestUITests */,
 				F1027363245F2EF700961EDE /* Products */,
+				F10273B12460924C00961EDE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +119,7 @@
 		F1027364245F2EF700961EDE /* AlarmTest */ = {
 			isa = PBXGroup;
 			children = (
+				F10273A824605A4100961EDE /* Resources */,
 				F102739D245F2FA700961EDE /* App */,
 				F102739A245F2F6C00961EDE /* Services */,
 				F1027395245F2F1900961EDE /* Modules */,
@@ -141,10 +152,10 @@
 		F1027395245F2F1900961EDE /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				F1027369245F2EF700961EDE /* MainViewController.swift */,
 				F1027396245F2F4100961EDE /* MainPresenter.swift */,
 				F1027398245F2F5800961EDE /* MainProtocol.swift */,
 				F10273A0245F306800961EDE /* MainConfigurator.swift */,
+				F10273AD24606AB900961EDE /* MainViewController.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -154,6 +165,8 @@
 			children = (
 				F102739B245F2F8E00961EDE /* AlarmService.swift */,
 				F10273A2245F326600961EDE /* AlarmServiceProtocol.swift */,
+				F10273A4245F5A4A00961EDE /* RecorderService.swift */,
+				F10273A6245F5A5D00961EDE /* PlayerService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -162,9 +175,25 @@
 			isa = PBXGroup;
 			children = (
 				F1027365245F2EF700961EDE /* AppDelegate.swift */,
-				F1027367245F2EF700961EDE /* SceneDelegate.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		F10273A824605A4100961EDE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F10273B42460B21E00961EDE /* nature.mp3 */,
+				F10273B62460B22700961EDE /* alarm.mp3 */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F10273B12460924C00961EDE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F10273B22460924C00961EDE /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +300,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F10273B52460B21E00961EDE /* nature.mp3 in Resources */,
+				F10273B72460B22700961EDE /* alarm.mp3 in Resources */,
 				F1027372245F2EF800961EDE /* LaunchScreen.storyboard in Resources */,
 				F102736F245F2EF800961EDE /* Assets.xcassets in Resources */,
 				F102736D245F2EF700961EDE /* Main.storyboard in Resources */,
@@ -298,13 +329,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F102736A245F2EF700961EDE /* MainViewController.swift in Sources */,
 				F10273A1245F306800961EDE /* MainConfigurator.swift in Sources */,
+				F10273A5245F5A4A00961EDE /* RecorderService.swift in Sources */,
 				F102739C245F2F8E00961EDE /* AlarmService.swift in Sources */,
 				F1027366245F2EF700961EDE /* AppDelegate.swift in Sources */,
 				F1027399245F2F5800961EDE /* MainProtocol.swift in Sources */,
+				F10273A7245F5A5D00961EDE /* PlayerService.swift in Sources */,
+				F10273AE24606AB900961EDE /* MainViewController.swift in Sources */,
 				F10273A3245F326600961EDE /* AlarmServiceProtocol.swift in Sources */,
-				F1027368245F2EF700961EDE /* SceneDelegate.swift in Sources */,
 				F1027397245F2F4100961EDE /* MainPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,7 +442,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -464,7 +496,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

@@ -10,5 +10,5 @@ import Foundation
 
 
 protocol AlarmServiceProtocol {
-    
+    func setAlarm(time: Date, sleep: Int, success: @escaping (Bool) -> ())
 }
