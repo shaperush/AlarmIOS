@@ -23,9 +23,7 @@ class MainViewController: UIViewController, MainViewProtocol {
     
     let pickerView = UIPickerView()
     let datePicker = UIDatePicker()
-    
-    let documentInteractionController = UIDocumentInteractionController()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
