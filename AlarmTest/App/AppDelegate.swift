@@ -24,11 +24,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func requestAuthForLocalNotifications() {
         notifCenter.delegate = self
-        notifCenter.requestAuthorization(options: [.alert, .sound, .provisional]) { (granted, error) in
+        notifCenter.requestAuthorization(options: [.alert, .sound,]) { (granted, error) in
             if error != nil {
                 
             }
         }
     }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {
+        
+    }
 }
+
+
 

@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import UserNotifications
 
 class MainViewController: UIViewController, MainViewProtocol {
     var presenter: MainPresenterProtocol!
@@ -23,7 +24,8 @@ class MainViewController: UIViewController, MainViewProtocol {
     
     let pickerView = UIPickerView()
     let datePicker = UIDatePicker()
-        
+        let notifCenter = UNUserNotificationCenter.current()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

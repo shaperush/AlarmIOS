@@ -82,6 +82,7 @@ class AlarmService: AlarmServiceProtocol {
         } else {
             self.startRecord(time: time)
         }
+        self.scheduleNotification(date: time)
     }
     
     /// Run sleep timer song
@@ -99,8 +100,6 @@ class AlarmService: AlarmServiceProtocol {
     
     /// check if song playing and start alarm service
     private func startAlarm() {
-        scheduleNotification()
-        
         if let sleepWorkItem = sleepWorkItem, currentState != .alarm {
             self.player.stopSong(queue: alarmQueue, isFade: false, finish: { [weak self] in
                 self?.startAlarmService()
@@ -152,8 +151,12 @@ class AlarmService: AlarmServiceProtocol {
     }
     
     /// send local notification
-    func scheduleNotification() {
+    private func scheduleNotification(date: Date) {
         let alarmMessage = "Wake up"
+        print("ddd")
+        let calendar = Calendar.current
+        let dateComponents = calendar.dateComponents([ .hour, .minute], from: date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         
         let notificationCenter = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
@@ -161,8 +164,12 @@ class AlarmService: AlarmServiceProtocol {
         content.body = alarmMessage
         content.sound = UNNotificationSound.default
         let identifier = alarmMessage
-        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
-        notificationCenter.add(request)
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        notificationCenter.add(request) { (error) in
+            if let error = error {
+                print("Error \(error.localizedDescription)")
+            }
+        }
     }
     
     /// Convert date to string 
